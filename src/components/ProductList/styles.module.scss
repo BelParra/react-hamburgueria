@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.flexList {
+  display: inline-flex;
+  flex-wrap: nowrap;
+
+}

@@ -8,7 +8,7 @@ export const Header = () => {
 
    return (
 
-      <header>
+      <header className={styles.flexBox}>
          <img src={Logo} alt="Logo Kenzie Burguer" />
          <div>
             <button>

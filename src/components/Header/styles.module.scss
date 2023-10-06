@@ -1,4 +1,19 @@
-.flexBox{
+.flexBox {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    width: 414px;
+    height: 76px;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+
+    div {
+        display: flex;
+    }
+
+    img {
+        width: 158.94px;
+        height: 36.83px;
+    }
+
 }
