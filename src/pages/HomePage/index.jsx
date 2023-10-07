@@ -7,7 +7,8 @@ import { BurguerApi } from "../../services/api";
 export const HomePage = () => {
    const [productList, setProductList] = useState([]);
    const [cartList, setCartList] = useState([]);
-   
+   const [isVisible, setVisible] = useState(false);
+
    // useEffect montagem - carrega os produtos da API e joga em productList
 
    useEffect(() => {
@@ -26,7 +27,7 @@ export const HomePage = () => {
    // useEffect atualização - salva os produtos no localStorage (carregar no estado)
 
 
-   
+
    // adição, exclusão, e exclusão geral do carrinho
    // renderizações condições e o estado para exibir ou não o carrinho
    // filtro de busca
@@ -34,10 +35,10 @@ export const HomePage = () => {
 
    return (
       <>
-         <Header />
+         <Header setVisible={setVisible} />
          <main>
             <ProductList productList={productList} />
-            <CartModal cartList={cartList} />
+            {isVisible ? <CartModal cartList={cartList} setVisible={setVisible}/> : null}
          </main>
       </>
    );

@@ -3,15 +3,14 @@ import Logo from "../../assets/Logo.svg";
 import { MdSearch, MdShoppingCart } from "react-icons/md";
 import styles from "./styles.module.scss";
 
-export const Header = () => {
+export const Header = ({ setVisible }) => {
    const [value, setValue] = useState("");
 
    return (
-
       <header className={styles.flexBox}>
          <img src={Logo} alt="Logo Kenzie Burguer" />
          <div>
-            <button>
+            <button onClick={() => setVisible(true)}>
                <MdShoppingCart size={21} />
                <span>0</span>
             </button>
