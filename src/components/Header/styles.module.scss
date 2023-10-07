@@ -1,17 +1,20 @@
 .flexBox {
     display: flex;
     flex-direction: row;
-    width: 414px;
+    min-width: 414px;
     height: 76px;
     justify-content: space-between;
     align-items: center;
-    margin: 0 auto;
-    margin-top: 10px;
+    margin: 10px 16px 0 16px;
 
     div {
         display: flex;
         flex-direction: column;
-        
+
+        form {
+            display: flex;
+            align-items: center;
+        }
     }
 
     img {
@@ -37,4 +40,18 @@
         }
     }
 
+}
+
+@media (min-width:800px) {
+    .flexBox {
+
+        div {
+            flex-direction: row;
+
+            form{
+                margin-left: calc(35vw - 158.94px/2);
+            }
+        }
+
+    }
 }

@@ -5,15 +5,17 @@
     height: 346px;
     border: 2px solid var(--color-100);
     border-radius: 5px;
-    margin: 28px 20px 0 16px;
+    margin: 28px 10px 0 16px;
 
-    &:focus{
+    &:focus {
         border: 2px solid var(--color-primary);
     }
 
 
     .headerCard {
-        width: 300px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         height: 150px;
         position: relative;
 
@@ -24,6 +26,7 @@
             transform: translate(-50%, -50%);
             max-width: none;
             max-height: none;
+            margin: 0 auto;
         }
     }
 

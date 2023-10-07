@@ -3,6 +3,7 @@ body {
     font-weight: 600;
     font-family: 'Inter', sans-serif;
     line-height: 24px;
+    color: var(--color-300);
 }
 
 
@@ -23,11 +24,14 @@ body {
 .Heading3 {
     font-size: 18px;
     line-height: 24px;
+    color: var(--color-600);
 }
 
 .Headline{
     font-size: 16px;
     font-weight: 600;
+    line-height: 19.36px;
+    color: var(--color-600);
 }
 
 .Caption{
