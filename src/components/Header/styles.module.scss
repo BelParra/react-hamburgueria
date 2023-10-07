@@ -5,11 +5,11 @@
     height: 76px;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 16px 0 16px;
 
     div {
         display: flex;
         flex-direction: column;
+        margin: 10px 0 0 16px;
 
         form {
             display: flex;
@@ -45,11 +45,18 @@
 @media (min-width:800px) {
     .flexBox {
 
+        button {
+            margin-right: 15px;
+        }
+
         div {
             flex-direction: row;
+            margin-right: 112.19px;
+            margin-left: 112.19px;
 
-            form{
-                margin-left: calc(35vw - 158.94px/2);
+            form {
+                margin-top: 5px;
+                margin-left: calc(31vw - 158.94px/2);
             }
         }
 

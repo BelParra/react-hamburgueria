@@ -14,3 +14,15 @@
   padding: 0;
 
 }
+
+@media (min-width:800px) {
+ 
+  .container{
+    overflow-x: initial;
+  }
+
+  .flexList{
+    flex-wrap: wrap;
+    margin: 0 100px;
+  }
+}
