@@ -8,13 +8,9 @@ export const Header = ({ setVisible }) => {
 
    return (
       <header className={styles.flexBox}>
-         <img src={Logo} alt="Logo Kenzie Burguer" />
          <div>
-            <button onClick={() => setVisible(true)}>
-               <MdShoppingCart size={21} />
-               <span>0</span>
-            </button>
-            <form>
+         <img src={Logo} alt="Logo Kenzie Burguer" />
+         <form>
                <input
                   type="text"
                   value={value}
@@ -24,6 +20,12 @@ export const Header = ({ setVisible }) => {
                   <MdSearch size={21} />
                </button>
             </form>
+         </div>
+         <div>
+            <button onClick={() => setVisible(true)}>
+               <MdShoppingCart size={21} />
+               <span>0</span>
+            </button>
          </div>
       </header>
    );
