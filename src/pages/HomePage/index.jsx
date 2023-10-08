@@ -28,17 +28,19 @@ export const HomePage = () => {
       }
    }, []);
 
-   useEffect(() => {
-      localStorage.setItem('cart', JSON.stringify(cartList));
-   }, [cartList]);
 
    const addToCart = (product) => {
       const productWithKey = { ...product, key: crypto.randomUUID() };
-      setCartList([...cartList, productWithKey]);
+      const newCartList = [...cartList, productWithKey];
+      setCartList(newCartList);
+      localStorage.setItem('cart', JSON.stringify(newCartList));
    };
 
    const removeFromCart = (productToRemove) => {
-      setCartList(cartList.filter((product) => product !== productToRemove));
+      const newCartList = cartList.filter((product) =>
+         product.key !== productToRemove.key);
+      setCartList(newCartList);
+      localStorage.setItem('cart', JSON.stringify(newCartList));
    };
 
    return (
