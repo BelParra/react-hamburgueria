@@ -8,7 +8,7 @@ export const HomePage = () => {
    const [productList, setProductList] = useState([]);
    const [cartList, setCartList] = useState([]);
    const [isVisible, setVisible] = useState(false);
-
+   const [value, setValue] = useState("");
    useEffect(() => {
       const getProducts = async () => {
          try {
@@ -45,9 +45,9 @@ export const HomePage = () => {
 
    return (
       <>
-         <Header setVisible={setVisible} cartList={cartList} />
+         <Header setVisible={setVisible} cartList={cartList} setValue={setValue} />
          <main>
-            <ProductList productList={productList} addToCart={addToCart} />
+            <ProductList productList={productList} addToCart={addToCart} searchValue={value} />
             {isVisible ? <CartModal cartList={cartList} setVisible={setVisible} removeFromCart={removeFromCart} /> : null}
          </main>
       </>

@@ -3,18 +3,27 @@ import Logo from "../../assets/Logo.svg";
 import { MdSearch, MdShoppingCart } from "react-icons/md";
 import styles from "./styles.module.scss";
 
-export const Header = ({ setVisible, cartList }) => {
-   const [value, setValue] = useState("");
+export const Header = ({ setVisible, cartList, setValue }) => { 
+   const [localValue, setLocalValue] = useState("");
+
+   const handleInputChange = (e) => {
+      setLocalValue(e.target.value);
+   };
+
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      setValue(localValue); 
+   };
 
    return (
       <header className={styles.flexBox}>
          <div>
-         <img src={Logo} alt="Logo Kenzie Burguer" />
-         <form>
+            <img src={Logo} alt="Logo Kenzie Burguer" />
+            <form onSubmit={handleSubmit}> 
                <input
                   type="text"
-                  value={value}
-                  onChange={(e) => setValue(e.target.value)}
+                  value={localValue}
+                  onChange={handleInputChange}
                />
                <button type="submit">
                   <MdSearch size={21} />
