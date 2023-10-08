@@ -3,7 +3,7 @@ import Logo from "../../assets/Logo.svg";
 import { MdSearch, MdShoppingCart } from "react-icons/md";
 import styles from "./styles.module.scss";
 
-export const Header = ({ setVisible, cartList, setValue }) => { 
+export const Header = ({ setVisible, cartList, setValue }) => {
    const [localValue, setLocalValue] = useState("");
 
    const handleInputChange = (e) => {
@@ -12,14 +12,16 @@ export const Header = ({ setVisible, cartList, setValue }) => {
 
    const handleSubmit = (e) => {
       e.preventDefault();
-      setValue(localValue); 
+      setValue(localValue);
    };
 
+   const totalItens = cartList.reduce((total, product) =>
+      total + product.quantity, 0);
    return (
       <header className={styles.flexBox}>
          <div>
             <img src={Logo} alt="Logo Kenzie Burguer" />
-            <form onSubmit={handleSubmit}> 
+            <form onSubmit={handleSubmit}>
                <input
                   type="text"
                   value={localValue}
@@ -33,7 +35,7 @@ export const Header = ({ setVisible, cartList, setValue }) => {
          <div>
             <button onClick={() => setVisible(true)}>
                <MdShoppingCart size={21} />
-               <span>{cartList ? cartList.length : 0}</span>
+               <span>{totalItens}</span>
 
             </button>
          </div>

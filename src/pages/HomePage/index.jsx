@@ -30,18 +30,36 @@ export const HomePage = () => {
 
 
    const addToCart = (product) => {
-      const productWithKey = { ...product, key: crypto.randomUUID() };
-      const newCartList = [...cartList, productWithKey];
-      setCartList(newCartList);
-      localStorage.setItem('cart', JSON.stringify(newCartList));
+      const existingProduct = cartList.find(item => item.id === product.id);
+
+      if (existingProduct) {
+         existingProduct.quantity += 1;
+      } else {
+         product.quantity = 1;
+         cartList.push(product);
+      }
+
+      setCartList([...cartList]);
+      localStorage.setItem('cart', JSON.stringify(cartList));
    };
 
    const removeFromCart = (productToRemove) => {
-      const newCartList = cartList.filter((product) =>
-         product.key !== productToRemove.key);
-      setCartList(newCartList);
-      localStorage.setItem('cart', JSON.stringify(newCartList));
+      setCartList((prevCartList) => {
+         const newCartList = prevCartList.map(product => {
+            if (product.id === productToRemove.id) {
+               return { ...product, quantity: product.quantity - 1 };
+            } else {
+               return product;
+            }
+         });
+
+         const finalCartList = newCartList.filter(product => product.quantity > 0);
+         localStorage.setItem('cart', JSON.stringify(finalCartList));
+         return finalCartList;
+      });
    };
+
+
 
    return (
       <>

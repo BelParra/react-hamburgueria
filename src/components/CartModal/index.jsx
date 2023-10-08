@@ -6,7 +6,7 @@ import { useEffect } from "react";
 
 export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
    const total = cartList ? cartList.reduce((prevValue, product) => {
-      return prevValue + product.price;
+      return prevValue + product.price * product.quantity;
    }, 0) : 0;
 
    const handleClickOutside = (event) => {
@@ -40,7 +40,7 @@ export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
             <div className={styles.itemContainer}>
                <ul>
                   {cartList.map((product) => (
-                     <CartItemCard key={product.key} product={product} removeFromCart={removeFromCart} />
+                     <CartItemCard key={product.id} product={product} removeFromCart={removeFromCart} />
                   ))}
                </ul>
             </div>
