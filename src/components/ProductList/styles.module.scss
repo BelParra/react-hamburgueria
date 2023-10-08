@@ -11,17 +11,16 @@
 .flexList {
   display: inline-flex;
   flex-wrap: nowrap;
-  padding: 0;
 
 }
 
 @media (min-width:800px) {
- 
-  .container{
+
+  .container {
     overflow-x: initial;
   }
 
-  .flexList{
+  .flexList {
     flex-wrap: wrap;
     margin: 0 100px;
   }

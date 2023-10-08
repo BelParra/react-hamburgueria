@@ -1,6 +1,10 @@
 ol,
-ul {
+ul,
+h3 {
 	list-style: none;
+	padding: 0;
+	margin-block-start: 0;
+	margin-block-end: 0;
 }
 
 button {

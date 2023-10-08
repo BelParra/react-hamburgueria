@@ -37,7 +37,7 @@ export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
                   <MdClose size={21} />
                </button>
             </div>
-            <div>
+            <div className={styles.itemContainer}>
                <ul>
                   {cartList.map((product) => (
                      <CartItemCard key={product.key} product={product} removeFromCart={removeFromCart} />
