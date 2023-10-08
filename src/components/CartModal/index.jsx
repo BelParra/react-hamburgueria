@@ -3,11 +3,10 @@ import { CartItemCard } from "./CartItemCard";
 import styles from "./styles.module.scss";
 import "../../styles/index.scss";
 
-
-export const CartModal = ({ setVisible, cartList }) => {
-   const total = cartList.reduce((prevValue, product) => {
+export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
+   const total = cartList ? cartList.reduce((prevValue, product) => {
       return prevValue + product.price;
-   }, 0);
+   }, 0) : 0;
 
    return (
       <div className={styles.modal} role="dialog">
@@ -21,7 +20,7 @@ export const CartModal = ({ setVisible, cartList }) => {
             <div>
                <ul>
                   {cartList.map((product) => (
-                     <CartItemCard key={product.id} product={product} />
+                     <CartItemCard key={product.key} product={product} removeFromCart={removeFromCart} />
                   ))}
                </ul>
             </div>

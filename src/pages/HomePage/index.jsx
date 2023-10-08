@@ -9,8 +9,6 @@ export const HomePage = () => {
    const [cartList, setCartList] = useState([]);
    const [isVisible, setVisible] = useState(false);
 
-   // useEffect montagem - carrega os produtos da API e joga em productList
-
    useEffect(() => {
       const getProducts = async () => {
          try {
@@ -21,24 +19,34 @@ export const HomePage = () => {
          }
       };
       getProducts();
-
    }, []);
 
-   // useEffect atualização - salva os produtos no localStorage (carregar no estado)
+   useEffect(() => {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+         setCartList(JSON.parse(savedCart));
+      }
+   }, []);
 
+   useEffect(() => {
+      localStorage.setItem('cart', JSON.stringify(cartList));
+   }, [cartList]);
 
+   const addToCart = (product) => {
+      const productWithKey = { ...product, key: crypto.randomUUID() };
+      setCartList([...cartList, productWithKey]);
+   };
 
-   // adição, exclusão, e exclusão geral do carrinho
-   // renderizações condições e o estado para exibir ou não o carrinho
-   // filtro de busca
-   // estilizar tudo com sass de forma responsiva
+   const removeFromCart = (productToRemove) => {
+      setCartList(cartList.filter((product) => product !== productToRemove));
+   };
 
    return (
       <>
-         <Header setVisible={setVisible} />
+         <Header setVisible={setVisible} cartList={cartList} />
          <main>
-            <ProductList productList={productList} />
-            {isVisible ? <CartModal cartList={cartList} setVisible={setVisible}/> : null}
+            <ProductList productList={productList} addToCart={addToCart} />
+            {isVisible ? <CartModal cartList={cartList} setVisible={setVisible} removeFromCart={removeFromCart} /> : null}
          </main>
       </>
    );

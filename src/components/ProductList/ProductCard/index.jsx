@@ -1,9 +1,9 @@
 import styles from "./styles.module.scss";
 import "../../../styles/index.scss";
 
-export const ProductCard = ({ product }) => {
+export const ProductCard = ({ product, addToCart }) => {
     return (
-        <li className={styles.flexCard}  tabIndex={0}>
+        <li className={styles.flexCard} tabIndex={0}>
             <div className={styles.headerCard}>
                 <img src={product.img} alt={product.name} />
             </div>
@@ -11,7 +11,7 @@ export const ProductCard = ({ product }) => {
                 <h3 className="Heading3">{product.name}</h3>
                 <span className="Caption">{product.category}</span>
                 <span className="Price">{product.price.toLocaleString('pt-BR', { style: "currency", currency: "BRL" })}</span>
-                <button className="btn-medium">Adicionar</button>
+                <button className="btn-medium" onClick={() => addToCart(product)}>Adicionar</button>
             </div>
         </li>
     );
