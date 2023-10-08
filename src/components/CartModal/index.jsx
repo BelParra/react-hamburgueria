@@ -2,14 +2,34 @@ import { MdClose } from "react-icons/md";
 import { CartItemCard } from "./CartItemCard";
 import styles from "./styles.module.scss";
 import "../../styles/index.scss";
+import { useEffect } from "react";
 
 export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
    const total = cartList ? cartList.reduce((prevValue, product) => {
       return prevValue + product.price;
    }, 0) : 0;
 
+   const handleClickOutside = (event) => {
+      if (event.currentTarget === event.target) {
+         setVisible(false);
+      }
+   };
+
+   const handleEscape = (event) => {
+      if (event.key === 'Escape') {
+         setVisible(false);
+      }
+   };
+
+   useEffect(() => {
+      window.addEventListener('keydown', handleEscape);
+      return () => {
+         window.removeEventListener('keydown', handleEscape);
+      };
+   }, []);
+
    return (
-      <div className={styles.modal} role="dialog">
+      <div className={styles.modal} role="dialog" onClick={handleClickOutside} onKeyDown={handleEscape} tabIndex="-1">
          <div className={styles.modalContent}>
             <div className={styles.headerCart}>
                <h2 className="Heading3">Carrinho de compras</h2>
