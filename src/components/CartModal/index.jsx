@@ -4,7 +4,7 @@ import styles from "./styles.module.scss";
 import "../../styles/index.scss";
 import { useEffect } from "react";
 
-export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
+export const CartModal = ({ setCartList, setVisible, cartList, removeFromCart}) => {
    const total = cartList ? cartList.reduce((prevValue, product) => {
       return prevValue + product.price * product.quantity;
    }, 0) : 0;
@@ -28,6 +28,11 @@ export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
       };
    }, []);
 
+   const removeAllFromCart = () => {
+      setCartList([]);
+      localStorage.setItem('cart', JSON.stringify([]));
+   };
+
    return (
       <div className={styles.modal} role="dialog" onClick={handleClickOutside} onKeyDown={handleEscape} tabIndex="-1">
          <div className={styles.modalContent}>
@@ -43,14 +48,14 @@ export const CartModal = ({ setVisible, cartList, removeFromCart }) => {
                      <CartItemCard key={product.id} product={product} removeFromCart={removeFromCart} />
                   ))}
                </ul>
-            </div>
+            </div> 
             <div className={styles.footerContent}>
                <div className={styles.priceContent}>
                   <span className="Headline">Total</span>
                   <span>{total.toLocaleString('pt-BR', { style: "currency", currency: "BRL" })}</span>
                </div>
                <div className={styles.removeButton}>
-                  <button className="Headline">Remover todos</button>
+                  <button className="Headline" onClick={removeAllFromCart}>Remover todos</button>
                </div>
             </div>
          </div>

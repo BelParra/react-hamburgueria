@@ -7,7 +7,7 @@ export const CartItemCard = ({ product, removeFromCart }) => {
          <div className={styles.itemFlex}>
             <div className={styles.imgContent}>
                <img src={product.img} alt={product.name} />
-               <span className={styles.quantity}>{product.quantity}</span>
+               <span>{product.quantity}</span>
             </div>
             <div className={styles.infoContainer}>
                <h3 className="Heading3">{product.name}</h3>
