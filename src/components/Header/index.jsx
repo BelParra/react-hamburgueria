@@ -1,6 +1,5 @@
-import { useState } from "react";
 import Logo from "../../assets/Logo.svg";
-import { MdSearch, MdShoppingCart } from "react-icons/md";
+import { MdShoppingCart } from "react-icons/md";
 import styles from "./styles.module.scss";
 
 export const Header = ({ setVisible, cartList }) => {
@@ -12,7 +11,7 @@ export const Header = ({ setVisible, cartList }) => {
          <div>
             <img src={Logo} alt="Logo Kenzie Burguer" />
             <button onClick={() => setVisible(true)}>
-               <MdShoppingCart size={21} />
+               <MdShoppingCart size={25} color="#BDBDBD" />
                <span>{totalItens}</span>
 
             </button>
