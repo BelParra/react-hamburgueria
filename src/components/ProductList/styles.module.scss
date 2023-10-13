@@ -16,13 +16,14 @@
 
 }
 
-@media (min-width:800px) {
+@media (min-width:1600px) {
 
   .container {
     overflow-x: initial;
   }
 
   .flexList {
+    width: 1368px;
     flex-wrap: wrap;
     margin: 0 116px 66px 116px;
 
